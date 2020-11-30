@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+$cell-size: 84px;
+$cell-border-size: 4px;
+
+/* colors */
+$color-white-dark: #c9cedd;
+$color-white-bright: #790c50;
+$color-white-action: #0085ff;
+$color-white-action-d: #c8c512;
+$color-white-bg: #f2f4fa;
+$color-white-common-text: #000;
+$color-white-contrast-text: #fff;
+
+$color-black-dark: #1C2338;
+$color-black-bright: #c36627;
+$color-black-action: #fff100;
+$color-black-action-d: #c8c512;
+$color-black-bg: #1E273D;
+$color-black-common-text: #fff;
+$color-black-contrast-text: #000;
+
+.white {
+    .App-header {
+        background-color: $color-white-bg;
+        color: $color-white-common-text;
+    }
+
+    .cell {
+        background-color: $color-white-dark;
+        border-color: $color-white-dark;
+        border: 0;
+        border-radius: 0;
+        
+        &.is-opened {
+            background-color: $color-white-bright;
+        }
+    }
+
+    .controller {
+        border-color: $color-white-dark;
+        background-color: $color-white-action;
+        color: $color-white-contrast-text;
+
+        &:active, &:disabled {
+            background-color: $color-white-action-d;
+        }
+    }
+
+    .grid-cell {
+        width: $cell-size;
+        height: $cell-size;
+    }
+}
+
+.black {
+    .App-header {
+        background-color: $color-black-bg;
+        color: $color-black-common-text;
+    }
+
+    .cell {
+        background-color: $color-black-dark;
+        border-color: $color-black-dark;
+        border-radius: 16px;
+        
+        &.is-opened {
+            background-color: $color-black-bright;
+        }
+    }
+
+    .controller {
+        border-color: $color-black-dark;
+        background-color: $color-black-action;
+        color: $color-black-contrast-text;
+
+        &:active, &:disabled {
+            background-color: $color-black-action-d;
+        }
+    }
+}
+
+.app {
+  text-align: center;
+  position: relative;
+}
+
+.App-header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    background-color: #412d2d;
+    color: #fff;
+    
+    &.hook {
+        background-color: #2a323f;
+    }
+
+    h2 {
+        font-size: 62px;
+        line-height: 50px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+.grid-cell {
+    width: calc(#{$cell-size} - (#{$cell-border-size} * 2));
+    height: calc(#{$cell-size} - (#{$cell-border-size} * 2));
+}
+
+.count {
+    width: calc(#{$cell-size} * 3);
+    height: calc(#{$cell-size} * 5);
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.counts {
+    width: calc(#{$cell-size} * 7);
+    display: flex;
+    justify-content: space-between;
+}
+
+.controllers--all {
+    width: 60%;
+    min-width: 300px;
+    max-width: 800px;
+}
+
+.controllrs--group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    input {
+        font-size: 33px;
+        height: 60px;
+        width: 100px;
+        box-sizing: border-box;
+        margin-right: 10px;
+        padding-left: 20px;
+    }
+}
+
+.cell {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: $cell-border-size solid;
+    border-color: #1c1203;
+    border-radius: calc(50% - 6px);
+    transition: transform 0.4s;
+    background-color: #261818;
+
+    &.is-opened {
+        background-color: #e6eff8;
+        transform: rotateY(180deg);
+    }
+}
+
+.controller {
+    width: 100%;
+    height: 80px;
+    font-size: 42px;
+    border: 3px solid;
+    border-radius: 16px;
+    outline: none;
+    background-color: #7b5959;
+}
+
+.top-offset-20 {
+    margin-top: 20px; 
+}
+
+.black ~ .theme-button, .white ~ .theme-button {
+    visibility: initial;
+}
+
+.theme-button {
+    visibility: hidden;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 100px;
+    font-size: 16px;
+    height: 60px;
+    border: 3px solid;
+    border-radius: 16px;
+    outline: none;
+}
+
+.mood {
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    font-size: 66px;
+}
+
